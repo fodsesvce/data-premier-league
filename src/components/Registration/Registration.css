@@ -1,0 +1,2968 @@
+/* ============================================================
+   DPL REGISTRATION
+   ============================================================ */
+
+.registration-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(37, 99, 235, 0.14),
+      transparent 38%
+    ),
+    #030507;
+
+  color: var(--text-white);
+  font-family: var(--font-body);
+}
+
+
+.registration-page-grid {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.45;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 10%,
+      transparent 80%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 10%,
+      transparent 80%
+    );
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.registration-header {
+  width:
+    min(
+      1200px,
+      calc(100% - 40px)
+    );
+
+  margin: 0 auto;
+
+  padding: 28px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  position: relative;
+  z-index: 5;
+
+  border-bottom:
+    1px solid var(--line-subtle);
+}
+
+
+.registration-brand {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.registration-logo {
+  width: 48px;
+  height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    #020304
+    url('/assets/dpl-navbar-logo.png')
+    center / cover no-repeat;
+
+  color: transparent;
+  font-size: 0;
+
+  box-shadow:
+    0 0 25px
+    rgba(37, 99, 235, 0.18);
+}
+
+
+.registration-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+
+.registration-brand-text strong {
+  font-family: var(--font-display);
+
+  font-size: 17px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+.registration-brand-text small {
+  margin-top: 5px;
+
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-back {
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color:
+    var(--text-muted);
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.registration-back:hover {
+  color:
+    var(--accent-blue-light);
+
+  transform:
+    translateX(-3px);
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.registration-main {
+  width:
+    min(
+      980px,
+      calc(100% - 40px)
+    );
+
+  margin: 0 auto;
+
+  padding:
+    70px 0 100px;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================
+   HEADING
+   ============================================================ */
+
+.registration-heading {
+  text-align: center;
+
+  max-width: 780px;
+
+  margin:
+    0 auto 52px;
+}
+
+
+.registration-kicker {
+  display: inline-flex;
+
+  margin-bottom: 20px;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-heading h1 {
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      60px,
+      9vw,
+      118px
+    );
+
+  line-height: 0.88;
+
+  font-weight: 900;
+
+  letter-spacing: -0.035em;
+
+  color:
+    var(--text-white);
+}
+
+
+.registration-heading h1 span {
+  display: block;
+
+  background:
+    var(--accent-gradient-blue);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+.registration-heading p {
+  max-width: 680px;
+
+  margin:
+    28px auto 0;
+
+  color:
+    var(--text-body);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+.registration-note {
+  width: fit-content;
+
+  margin:
+    24px auto 0;
+
+  padding:
+    9px 14px;
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.2);
+
+  border-radius: 999px;
+
+  background:
+    rgba(37, 99, 235, 0.07);
+
+  color:
+    var(--accent-blue-light);
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.registration-note-dot {
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background:
+    var(--accent-blue-light);
+
+  box-shadow:
+    0 0 10px
+    var(--accent-blue-light);
+}
+
+
+/* ============================================================
+   FORM SHELL
+   ============================================================ */
+
+.registration-form-shell {
+  width: 100%;
+}
+
+
+/* ============================================================
+   PROGRESS
+   ============================================================ */
+
+.registration-progress {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+
+.registration-progress-step {
+  min-height: 62px;
+
+  padding:
+    10px 14px;
+
+  border:
+    1px solid var(--line-subtle);
+
+  background:
+    rgba(10, 10, 13, 0.78);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 3px;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.registration-progress-step span {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color:
+    var(--text-faint);
+}
+
+
+.registration-progress-step small {
+  font-family: var(--font-display);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  color:
+    var(--text-muted);
+}
+
+
+.registration-progress-step.active {
+  border-color:
+    rgba(56, 189, 248, 0.5);
+
+  background:
+    rgba(37, 99, 235, 0.1);
+}
+
+
+.registration-progress-step.active span,
+.registration-progress-step.active small {
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-progress-step.completed {
+  border-color:
+    rgba(56, 189, 248, 0.25);
+}
+
+
+.registration-progress-step.completed span {
+  color:
+    var(--accent-blue-light);
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.registration-card {
+  border:
+    1px solid var(--line-subtle);
+
+  border-radius: 20px;
+
+  background:
+    rgba(7, 7, 9, 0.94);
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.45);
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   STEP
+   ============================================================ */
+
+.registration-step {
+  padding:
+    clamp(24px, 5vw, 52px);
+}
+
+
+.registration-step-header {
+  padding-bottom: 30px;
+
+  margin-bottom: 34px;
+
+  border-bottom:
+    1px solid var(--line-subtle);
+}
+
+
+.registration-step-number {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-step-header h2 {
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      32px,
+      5vw,
+      58px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.95;
+
+  color:
+    var(--text-white);
+
+  letter-spacing: -0.02em;
+}
+
+
+.registration-step-header p {
+  max-width: 700px;
+
+  margin-top: 15px;
+
+  color:
+    var(--text-body);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+
+.registration-step-header strong {
+  color:
+    var(--accent-blue-light);
+}
+
+
+/* ============================================================
+   FIELDS
+   ============================================================ */
+
+.registration-field {
+  margin-bottom: 25px;
+}
+
+
+.registration-field label,
+.registration-fieldset legend {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  color:
+    var(--text-body);
+}
+
+
+.registration-field label span,
+.registration-fieldset legend span {
+  color:
+    #f87171;
+}
+
+
+.registration-field input[type="text"],
+.registration-field input[type="email"],
+.registration-field input[type="tel"] {
+  width: 100%;
+
+  min-height: 54px;
+
+  padding:
+    0 16px;
+
+  border:
+    1px solid var(--line-crisp);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color:
+    var(--text-white);
+
+  font-family: var(--font-body);
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.registration-field input:focus {
+  border-color:
+    rgba(56, 189, 248, 0.65);
+
+  background:
+    rgba(37, 99, 235, 0.04);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+
+.registration-field input::placeholder {
+  color:
+    var(--text-faint);
+}
+
+
+/* ============================================================
+   FIELDSET
+   ============================================================ */
+
+.registration-fieldset {
+  border: 0;
+
+  margin:
+    0 0 28px;
+
+  padding: 0;
+}
+
+
+.registration-radio-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+
+.registration-year-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 8px;
+}
+
+
+.registration-radio-card {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    0 14px;
+
+  border:
+    1px solid var(--line-crisp);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.02);
+
+  color:
+    var(--text-muted);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.registration-radio-card:hover {
+  border-color:
+    rgba(56, 189, 248, 0.35);
+
+  color:
+    var(--text-white);
+}
+
+
+.registration-radio-card.selected {
+  border-color:
+    rgba(56, 189, 248, 0.55);
+
+  background:
+    rgba(37, 99, 235, 0.1);
+
+  color:
+    var(--text-white);
+}
+
+
+.registration-radio-card input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.custom-radio {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 15px;
+
+  border:
+    1px solid var(--text-faint);
+
+  border-radius: 50%;
+
+  position: relative;
+}
+
+
+.registration-radio-card.selected
+.custom-radio {
+  border-color:
+    var(--accent-blue-light);
+}
+
+
+.registration-radio-card.selected
+.custom-radio::after {
+  content: '';
+
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  left: 3px;
+  top: 3px;
+
+  border-radius: 50%;
+
+  background:
+    var(--accent-blue-light);
+
+  box-shadow:
+    0 0 8px
+    var(--accent-blue-light);
+}
+
+
+.registration-radio-card span:last-child {
+  font-family: var(--font-body);
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   DOCUMENT UPLOAD
+   ============================================================ */
+
+.registration-document-card {
+  padding: 22px;
+
+  margin-bottom: 16px;
+
+  border:
+    1px solid var(--line-subtle);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.015);
+}
+
+
+.registration-document-heading {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+
+.registration-document-number {
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-document-heading h3,
+.registration-section-title h3 {
+  font-family: var(--font-display);
+
+  font-size: 17px;
+  font-weight: 900;
+
+  color:
+    var(--text-white);
+
+  letter-spacing: 0.03em;
+}
+
+
+.registration-document-heading p,
+.registration-section-title p {
+  margin-top: 4px;
+
+  color:
+    var(--text-muted);
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   RESUME UPLOAD AREA
+   ============================================================ */
+
+.registration-upload-area {
+  min-height: 180px;
+
+  border:
+    1px dashed
+    rgba(56, 189, 248, 0.28);
+
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  position: relative;
+
+  background:
+    rgba(37, 99, 235, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.registration-upload-area:hover {
+  border-color:
+    rgba(56, 189, 248, 0.6);
+
+  background:
+    rgba(37, 99, 235, 0.07);
+}
+
+
+.registration-upload-area input {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+
+.registration-upload-symbol {
+  width: 46px;
+  height: 46px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(37, 99, 235, 0.14);
+
+  color:
+    var(--accent-blue-light);
+
+  font-family: var(--font-display);
+
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+.registration-upload-area strong {
+  max-width: 90%;
+
+  font-family: var(--font-display);
+
+  font-size: 15px;
+  font-weight: 800;
+
+  color:
+    var(--text-white);
+
+  overflow-wrap: anywhere;
+}
+
+
+.registration-upload-area small {
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  color:
+    var(--text-muted);
+
+  letter-spacing: 0.1em;
+}
+
+
+/* ============================================================
+   DOCUMENT SECURITY INFORMATION
+   ============================================================ */
+
+.registration-info-box {
+  margin-top: 22px;
+
+  padding: 18px;
+
+  border-left:
+    2px solid
+    var(--accent-blue-light);
+
+  background:
+    rgba(37, 99, 235, 0.06);
+}
+
+
+.registration-info-box strong {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-info-box p {
+  margin-top: 7px;
+
+  color:
+    var(--text-muted);
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   PROGRAMMING SKILLS
+   ============================================================ */
+
+.registration-skill-section {
+  padding:
+    24px 0;
+
+  border-bottom:
+    1px solid var(--line-subtle);
+}
+
+
+.registration-skill-section:last-child {
+  border-bottom: 0;
+}
+
+
+.registration-section-title {
+  display: flex;
+
+  gap: 14px;
+
+  margin-bottom: 20px;
+}
+
+
+.registration-section-title > span {
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+/* ============================================================
+   SINGLE LANGUAGE SELECTOR
+   ============================================================ */
+
+.registration-ranking-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+
+.registration-rank-row {
+  display: grid;
+
+  grid-template-columns:
+    45px 1fr;
+
+  gap: 10px;
+}
+
+
+.registration-rank-number {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid var(--line-crisp);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.02);
+
+  font-family: var(--font-display);
+
+  font-size: 18px;
+  font-weight: 900;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-rank-row select {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding:
+    0 15px;
+
+  border:
+    1px solid var(--line-crisp);
+
+  border-radius: 10px;
+
+  background:
+    #0c0d10;
+
+  color:
+    var(--text-white);
+
+  font-family: var(--font-body);
+
+  font-size: 14px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.registration-rank-row select:hover {
+  border-color:
+    rgba(56, 189, 248, 0.35);
+}
+
+
+.registration-rank-row select:focus {
+  border-color:
+    rgba(56, 189, 248, 0.6);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+
+.registration-rank-row select option {
+  background:
+    #0c0d10;
+
+  color:
+    var(--text-white);
+}
+
+
+/* ============================================================
+   PROFICIENCY
+   ============================================================ */
+
+.registration-proficiency-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+
+.registration-proficiency-card {
+  min-height: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid var(--line-crisp);
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color:
+    var(--text-muted);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.registration-proficiency-card:hover {
+  border-color:
+    rgba(56, 189, 248, 0.35);
+
+  color:
+    var(--text-white);
+}
+
+
+.registration-proficiency-card input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.registration-proficiency-card.selected {
+  border-color:
+    rgba(56, 189, 248, 0.6);
+
+  background:
+    rgba(37, 99, 235, 0.1);
+
+  color:
+    var(--text-white);
+
+  box-shadow:
+    0 0 20px
+    rgba(37, 99, 235, 0.08);
+}
+
+
+/* ============================================================
+   ERRORS
+   ============================================================ */
+
+.registration-field-error {
+  display: block;
+
+  margin-top: 7px;
+
+  color:
+    #f87171;
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+.registration-submit-error {
+  margin:
+    0 28px 20px;
+
+  padding: 16px;
+
+  border:
+    1px solid
+    rgba(248, 113, 113, 0.35);
+
+  border-radius: 10px;
+
+  background:
+    rgba(248, 113, 113, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.registration-submit-error strong {
+  color:
+    #fca5a5;
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+}
+
+
+.registration-submit-error span {
+  color:
+    #fecaca;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+
+.registration-actions {
+  min-height: 82px;
+
+  padding:
+    16px 28px;
+
+  border-top:
+    1px solid var(--line-subtle);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.registration-action-spacer {
+  flex: 1;
+}
+
+
+.registration-primary-btn,
+.registration-secondary-btn {
+  min-height: 48px;
+
+  padding:
+    0 22px;
+
+  border-radius: 999px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  font-family: var(--font-display);
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.registration-primary-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color: white;
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.55);
+
+  box-shadow:
+    0 8px 25px
+    rgba(37, 99, 235, 0.22);
+}
+
+
+.registration-primary-btn:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 35px
+    rgba(56, 189, 248, 0.28);
+}
+
+
+.registration-primary-btn:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+
+  transform: none;
+}
+
+
+.registration-secondary-btn {
+  border:
+    1px solid var(--line-crisp);
+
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  color:
+    var(--text-body);
+}
+
+
+.registration-secondary-btn:hover {
+  color:
+    var(--text-white);
+
+  border-color:
+    rgba(255, 255, 255, 0.25);
+}
+
+
+/* ============================================================
+   REVIEW
+   ============================================================ */
+
+.review-section {
+  border:
+    1px solid var(--line-subtle);
+
+  border-radius: 13px;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+}
+
+
+.review-section-header {
+  min-height: 62px;
+
+  padding:
+    12px 16px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom:
+    1px solid var(--line-subtle);
+
+  background:
+    rgba(255, 255, 255, 0.02);
+}
+
+
+.review-section-header > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.review-section-header span {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.review-section-header h3 {
+  font-family: var(--font-display);
+
+  font-size: 15px;
+  font-weight: 900;
+}
+
+
+.review-section-header button {
+  padding: 5px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  color:
+    var(--accent-blue-light);
+
+  cursor: pointer;
+}
+
+
+.review-section-header button:hover {
+  color:
+    var(--text-white);
+}
+
+
+.review-content {
+  padding:
+    6px 16px;
+}
+
+
+.review-row {
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.04);
+}
+
+
+.review-row:last-child {
+  border-bottom: 0;
+}
+
+
+.review-row > span {
+  color:
+    var(--text-muted);
+
+  font-size: 11px;
+}
+
+
+.review-row > strong {
+  color:
+    var(--text-white);
+
+  font-size: 12px;
+
+  text-align: right;
+
+  overflow-wrap: anywhere;
+}
+
+
+.review-row em {
+  font-style: normal;
+
+  color:
+    var(--accent-blue-light);
+
+  margin-right: 5px;
+}
+
+
+/* ============================================================
+   REVIEW SKILL
+   ============================================================ */
+
+.review-skill-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding:
+    10px 0;
+}
+
+
+.review-skill {
+  min-height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    0 10px;
+
+  border:
+    1px solid var(--line-subtle);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.015);
+}
+
+
+.review-skill-rank {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.review-skill strong {
+  flex: 1;
+
+  font-size: 12px;
+}
+
+
+.review-proficiency {
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  color:
+    var(--text-muted);
+
+  letter-spacing: 0.08em;
+}
+
+
+.review-empty {
+  padding:
+    16px 0;
+
+  color:
+    var(--text-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   CONFIRMATION
+   ============================================================ */
+
+.registration-confirmation-box {
+  margin-top: 22px;
+
+  padding: 18px;
+
+  display: flex;
+
+  gap: 14px;
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.2);
+
+  border-radius: 12px;
+
+  background:
+    rgba(37, 99, 235, 0.05);
+}
+
+
+.registration-confirmation-icon {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.16);
+
+  color:
+    var(--accent-blue-light);
+
+  font-weight: 900;
+}
+
+
+.registration-confirmation-box strong {
+  font-family: var(--font-display);
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+
+.registration-confirmation-box p {
+  margin-top: 5px;
+
+  color:
+    var(--text-muted);
+
+  font-size: 11px;
+
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   SUCCESS
+   ============================================================ */
+
+.registration-success {
+  padding:
+    clamp(35px, 7vw, 75px);
+
+  text-align: center;
+}
+
+
+.registration-success-mark {
+  width: 82px;
+  height: 82px;
+
+  margin:
+    0 auto 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.6);
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.12);
+
+  color:
+    var(--accent-blue-light);
+
+  font-family: var(--font-display);
+
+  font-size: 35px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 40px
+    rgba(37, 99, 235, 0.2);
+}
+
+
+.registration-success-kicker {
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-success h2 {
+  margin-top: 10px;
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(
+      55px,
+      10vw,
+      100px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.03em;
+}
+
+
+.registration-success > p {
+  margin:
+    20px auto 0;
+
+  max-width: 600px;
+
+  color:
+    var(--text-body);
+
+  font-size: 14px;
+}
+
+
+.registration-id-card {
+  max-width: 520px;
+
+  margin:
+    35px auto 20px;
+
+  padding:
+    25px;
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.32);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.12),
+      rgba(56, 189, 248, 0.03)
+    );
+}
+
+
+.registration-id-card span {
+  display: block;
+
+  font-family: var(--font-mono);
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  color:
+    var(--accent-blue-light);
+}
+
+
+.registration-id-card strong {
+  display: block;
+
+  margin:
+    10px 0;
+
+  font-family: var(--font-mono);
+
+  font-size:
+    clamp(
+      25px,
+      6vw,
+      44px
+    );
+
+  letter-spacing: 0.08em;
+
+  color:
+    var(--text-white);
+}
+
+
+.registration-id-card small {
+  display: block;
+
+  color:
+    var(--text-muted);
+
+  font-size: 10px;
+}
+
+
+.registration-success-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin-bottom: 35px;
+}
+
+
+.registration-success-info span {
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  letter-spacing: 0.14em;
+
+  color:
+    var(--text-muted);
+}
+
+
+.registration-success-info strong {
+  font-size: 12px;
+
+  color:
+    var(--text-body);
+}
+
+
+.registration-success-journey {
+  max-width: 760px;
+
+  margin:
+    0 auto 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.success-journey-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 75px;
+}
+
+
+.success-journey-item span {
+  font-family: var(--font-mono);
+
+  font-size: 8px;
+
+  color:
+    var(--text-faint);
+}
+
+
+.success-journey-item strong {
+  font-family: var(--font-display);
+
+  font-size: 10px;
+
+  color:
+    var(--text-muted);
+}
+
+
+.success-journey-item.active span,
+.success-journey-item.active strong {
+  color:
+    var(--accent-blue-light);
+}
+
+
+.success-journey-line {
+  width: 50px;
+  height: 1px;
+
+  background:
+    var(--line-crisp);
+
+  margin:
+    0 7px;
+}
+
+
+.registration-success-actions {
+  display: flex;
+
+  justify-content: center;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .registration-header {
+    width:
+      calc(100% - 24px);
+
+    padding:
+      18px 0;
+  }
+
+
+  .registration-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .registration-brand-text strong {
+    font-size: 14px;
+  }
+
+
+  .registration-back {
+    font-size: 8px;
+  }
+
+
+  .registration-main {
+    width:
+      calc(100% - 24px);
+
+    padding:
+      45px 0 60px;
+  }
+
+
+  .registration-heading {
+    margin-bottom: 35px;
+  }
+
+
+  .registration-heading h1 {
+    font-size:
+      clamp(
+        55px,
+        17vw,
+        90px
+      );
+  }
+
+
+  .registration-heading p {
+    font-size: 13px;
+  }
+
+
+  .registration-note {
+    max-width: 100%;
+
+    font-size: 7px;
+
+    text-align: center;
+  }
+
+
+  .registration-progress {
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap: 4px;
+  }
+
+
+  .registration-progress-step {
+    min-height: 52px;
+
+    padding: 7px;
+  }
+
+
+  .registration-progress-step small {
+    font-size: 8px;
+  }
+
+
+  .registration-card {
+    border-radius: 15px;
+  }
+
+
+  .registration-step {
+    padding:
+      24px 18px;
+  }
+
+
+  .registration-step-header h2 {
+    font-size: 34px;
+  }
+
+
+  .registration-radio-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+
+  .registration-year-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .registration-proficiency-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .registration-document-card {
+    padding: 16px;
+  }
+
+
+  .registration-upload-area {
+    min-height: 165px;
+  }
+
+
+  .registration-actions {
+    padding:
+      14px 16px;
+  }
+
+
+  .registration-primary-btn,
+  .registration-secondary-btn {
+    min-height: 46px;
+
+    padding:
+      0 16px;
+
+    font-size: 11px;
+  }
+
+
+  .registration-success-journey {
+    flex-wrap: wrap;
+
+    gap: 10px;
+  }
+
+
+  .success-journey-line {
+    display: none;
+  }
+
+
+  .success-journey-item {
+    min-width: 65px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .registration-brand-text {
+    display: none;
+  }
+
+
+  .registration-radio-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .registration-heading h1 {
+    font-size:
+      clamp(
+        48px,
+        16vw,
+        72px
+      );
+  }
+
+
+  .registration-heading p {
+    font-size: 12px;
+  }
+
+
+  .registration-progress-step small {
+    font-size: 7px;
+
+    letter-spacing: 0.03em;
+  }
+
+
+  .registration-progress-step {
+    text-align: center;
+
+    align-items: center;
+  }
+
+
+  .registration-rank-row {
+    grid-template-columns:
+      40px 1fr;
+  }
+
+
+  .registration-rank-number {
+    min-height: 50px;
+  }
+
+
+  .registration-rank-row select {
+    min-height: 50px;
+
+    font-size: 13px;
+  }
+
+
+  .registration-document-heading {
+    gap: 10px;
+  }
+
+
+  .registration-document-heading h3 {
+    font-size: 15px;
+  }
+
+
+  .registration-document-heading p {
+    font-size: 11px;
+  }
+
+
+  .registration-upload-area strong {
+    font-size: 13px;
+  }
+
+
+  .registration-upload-area small {
+    font-size: 7px;
+  }
+
+
+  .review-row {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding:
+      10px 0;
+  }
+
+
+  .review-row > strong {
+    text-align: left;
+  }
+
+
+  .review-skill {
+    flex-wrap: wrap;
+
+    padding:
+      9px 10px;
+
+    min-height: auto;
+  }
+
+
+  .review-skill strong {
+    min-width: 100px;
+  }
+
+
+  .registration-confirmation-box {
+    align-items: flex-start;
+  }
+
+
+  .registration-actions {
+    flex-wrap: wrap;
+  }
+
+
+  .registration-action-spacer {
+    display: none;
+  }
+
+
+  .registration-primary-btn {
+    flex: 1;
+  }
+
+
+  .registration-secondary-btn {
+    flex: 0 0 auto;
+  }
+
+
+  .registration-submit-error {
+    margin:
+      0 16px 18px;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .registration-page *,
+  .registration-page *::before,
+  .registration-page *::after {
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+  }
+
+}
+
+
+
+/* =========================================================
+   DPL CUSTOM PROGRAMMING LANGUAGE DROPDOWN
+========================================================= */
+
+.registration-language-field {
+  width: 100%;
+  margin-top: 28px;
+}
+
+.registration-select-label {
+  display: block;
+  margin-bottom: 10px;
+
+  color: #ffffff;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.registration-select-label span {
+  color: #38bdf8;
+  margin-left: 3px;
+}
+
+
+/* =========================================================
+   DROPDOWN CONTAINER
+========================================================= */
+
+.dpl-language-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+
+/* =========================================================
+   DROPDOWN TRIGGER
+========================================================= */
+
+.dpl-language-trigger {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 58px;
+
+  padding: 0 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+
+  background: #0b0c0f;
+
+  color: #ffffff;
+
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Placeholder */
+.dpl-language-trigger.placeholder {
+  color: #777b85;
+}
+
+
+/* Selected value */
+.dpl-language-trigger.has-value {
+  color: #ffffff;
+}
+
+
+/* Hover */
+.dpl-language-trigger:hover {
+  border-color: rgba(255, 255, 255, 0.30);
+  background: #101216;
+}
+
+
+/* Focus */
+.dpl-language-trigger:focus-visible {
+  border-color: #38bdf8;
+
+  box-shadow:
+    0 0 0 3px rgba(56, 189, 248, 0.10);
+}
+
+
+/* Open */
+.dpl-language-dropdown.is-open
+.dpl-language-trigger {
+  border-color: #38bdf8;
+
+  background: #101216;
+
+  box-shadow:
+    0 0 0 3px rgba(56, 189, 248, 0.08);
+}
+
+
+/* =========================================================
+   TRIGGER TEXT
+========================================================= */
+
+.dpl-language-trigger-text {
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.dpl-language-arrow {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  margin-left: 15px;
+
+  color: #38bdf8;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.dpl-language-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   CUSTOM OPTIONS CONTAINER
+========================================================= */
+
+.dpl-language-options {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  padding: 6px;
+
+  border: 1px solid rgba(56, 189, 248, 0.30);
+  border-radius: 10px;
+
+  background: #0b0c0f;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  animation: dplDropdownIn 0.14s ease-out;
+}
+
+
+/* =========================================================
+   OPTION
+========================================================= */
+
+.dpl-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #d7d9df;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+
+/* Hover */
+.dpl-language-option:hover {
+  background: rgba(56, 189, 248, 0.09);
+  color: #ffffff;
+}
+
+
+/* Selected */
+.dpl-language-option.selected {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+}
+
+
+/* Selected hover */
+.dpl-language-option.selected:hover {
+  background: rgba(56, 189, 248, 0.16);
+}
+
+
+/* =========================================================
+   OPTION CHECK
+========================================================= */
+
+.dpl-language-option-check {
+  color: #38bdf8;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ERROR STATE
+========================================================= */
+
+.dpl-language-dropdown.has-error
+.dpl-language-trigger {
+  border-color: #ef4444;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes dplDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .registration-language-field {
+    margin-top: 22px;
+  }
+
+  .dpl-language-trigger {
+    min-height: 54px;
+
+    padding: 0 15px;
+
+    font-size: 14px;
+  }
+
+  .dpl-language-option {
+    min-height: 46px;
+
+    padding: 0 13px;
+
+    font-size: 14px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SUBMISSION OVERLAY
+========================================================= */
+
+.registration-submission-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    rgba(2, 4, 8, 0.94);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  animation: submissionOverlayIn 0.25s ease-out;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.registration-submission-modal {
+  width: min(100%, 560px);
+
+  padding: 42px 36px;
+
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(13, 17, 24, 0.98),
+      rgba(7, 9, 13, 0.98)
+    );
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(56, 189, 248, 0.08);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.submission-loader {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(56, 189, 248, 0.08);
+}
+
+
+.submission-loader-ring {
+  width: 42px;
+  height: 42px;
+
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: #38bdf8;
+
+  border-radius: 50%;
+
+  animation:
+    submissionSpin 0.9s linear infinite;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.submission-eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #38bdf8;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+
+.registration-submission-modal h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(24px, 5vw, 34px);
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
+}
+
+
+.submission-stage {
+  margin: 12px 0 0;
+
+  color: #d6d9df;
+
+  font-size: 15px;
+}
+
+
+.submission-warning {
+  margin: 22px 0 28px;
+
+  color: #858b96;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   STATUS LIST
+========================================================= */
+
+.submission-progress-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  text-align: left;
+}
+
+
+.submission-status {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 24px;
+
+  font-size: 13px;
+}
+
+
+.submission-status-icon {
+  width: 22px;
+  height: 22px;
+
+  flex: 0 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+.submission-status-label {
+  color: #8f96a3;
+}
+
+
+/* =========================================================
+   COMPLETED
+========================================================= */
+
+.submission-status-completed
+.submission-status-icon {
+  color: #38bdf8;
+
+  background: rgba(56, 189, 248, 0.12);
+}
+
+
+.submission-status-completed
+.submission-status-label {
+  color: #d8dce3;
+}
+
+
+/* =========================================================
+   UPLOADING
+========================================================= */
+
+.submission-status-uploading
+.submission-status-icon {
+  background: rgba(56, 189, 248, 0.10);
+}
+
+
+.submission-status-uploading
+.submission-status-label {
+  color: #ffffff;
+}
+
+
+.submission-status-spinner {
+  width: 12px;
+  height: 12px;
+
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-top-color: #38bdf8;
+
+  border-radius: 50%;
+
+  animation:
+    submissionSpin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.submission-status-error
+.submission-status-icon {
+  color: #ff6b6b;
+
+  background: rgba(255, 107, 107, 0.10);
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.submission-progress-bar {
+  width: 100%;
+  height: 4px;
+
+  margin-top: 24px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+.submission-progress-fill {
+  width: 40%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #38bdf8;
+
+  animation:
+    submissionProgress 1.6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.submission-processing {
+  display: block;
+
+  margin-top: 18px;
+
+  color: #5f6672;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes submissionSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+@keyframes submissionProgress {
+
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(300%);
+  }
+
+}
+
+
+@keyframes submissionOverlayIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .registration-submission-overlay {
+    padding: 16px;
+  }
+
+
+  .registration-submission-modal {
+    padding: 32px 22px;
+    border-radius: 16px;
+  }
+
+
+  .submission-progress-list {
+    padding: 16px;
+  }
+
+
+  .submission-warning {
+    font-size: 12px;
+  }
+
+}

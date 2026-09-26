@@ -1,0 +1,31 @@
+{
+  "name": "dpl-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "@vitejs/plugin-react": "latest",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.38.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "^7.9.1",
+    "tailwind-merge": "^3.6.0",
+    "vite": "latest",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}
