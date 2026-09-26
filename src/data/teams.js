@@ -104,7 +104,7 @@ export const teams = [
   {
     id: 9, name: 'TEAM 09', logo: null, owner: null, captain: null,
     members: [
-      { name: 'Kiran Raj M',             image: BASE + 'KIRAN RAJ M.jpg' },
+      { name: 'Kiran Raj M',             image: BASE + 'kiranraj.jpeg' },
       { name: 'Balakrishnan R',           image: BASE + 'BALAKRISHNAN R.png' },
       { name: 'Aravindrajan A',           image: BASE + 'ARAVINDRAJAN A.jpeg' },
       { name: 'K Utkarsh Sai Sidhardh',  image: BASE + 'UTKARSH SAI SIDHARDH K.jpg' },
