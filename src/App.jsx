@@ -37,11 +37,20 @@ function PublicSiteShell() {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      const targetId = decodeURIComponent(hash.slice(1))
+      const frame = window.requestAnimationFrame(() => {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'auto', block: 'start' })
+      })
+      return () => window.cancelAnimationFrame(frame)
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [pathname])
+    return undefined
+  }, [pathname, hash])
 
   return null
 }

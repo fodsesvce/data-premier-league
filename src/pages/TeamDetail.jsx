@@ -14,6 +14,11 @@ import {
 function TeamPageHero({ team }) {
   const heroRef = useRef(null)
 
+  const handleSquadClick = (event) => {
+    event.preventDefault()
+    document.getElementById('squad')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const handlePointerMove = (event) => {
     if (event.pointerType !== 'mouse' || !heroRef.current) return
     const bounds = heroRef.current.getBoundingClientRect()
@@ -45,8 +50,8 @@ function TeamPageHero({ team }) {
         <TeamLogo team={team} large />
         <span>{team.label} / DPL 2026</span>
       </div>
-      <a className="team-page-scroll" href="#squad">
-        <span>SCROLL TO SQUAD</span>
+      <a className="team-page-scroll" href="#squad" onClick={handleSquadClick} aria-label="View squad">
+        <span>VIEW SQUAD</span>
         <ArrowIcon direction="down" size={16} />
       </a>
     </section>
@@ -87,7 +92,6 @@ export default function TeamDetail() {
       document.head.appendChild(meta)
     }
     meta.content = description
-    window.scrollTo(0, 0)
     return undefined
   }, [team])
 

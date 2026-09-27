@@ -346,6 +346,8 @@ export function PlayerModal({ player, team, onClose }) {
   const closeRef = useRef(null)
 
   useEffect(() => {
+    if (!player) return undefined
+
     const previousFocus = document.activeElement
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -401,13 +403,31 @@ export function PlayerModal({ player, team, onClose }) {
 }
 
 export function TeamSubnav({ team }) {
+  const [activeSection, setActiveSection] = useState('overview')
+
+  useEffect(() => {
+    const squadSection = document.getElementById('squad')
+    if (!squadSection || typeof IntersectionObserver === 'undefined') return undefined
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setActiveSection(entry.isIntersecting ? 'squad' : 'overview'),
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0 },
+    )
+
+    observer.observe(squadSection)
+    return () => observer.disconnect()
+  }, [])
+
+  const handleSectionClick = (event, sectionId) => {
+    event.preventDefault()
+    setActiveSection(sectionId)
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <nav className="team-subnav page-shell" style={{ '--team-accent': team.accent }} aria-label="Team detail sections">
-      <a href="#overview" className="active">OVERVIEW</a>
-      <a href="#squad">SQUAD</a>
-      <button type="button" disabled aria-disabled="true">MATCHES <small>SOON</small></button>
-      <button type="button" disabled aria-disabled="true">STATS <small>SOON</small></button>
-      <button type="button" disabled aria-disabled="true">NEWS <small>SOON</small></button>
+      <a href="#overview" className={activeSection === 'overview' ? 'active' : ''} onClick={(event) => handleSectionClick(event, 'overview')}>OVERVIEW</a>
+      <a href="#squad" className={activeSection === 'squad' ? 'active' : ''} onClick={(event) => handleSectionClick(event, 'squad')}>SQUAD</a>
     </nav>
   )
 }
