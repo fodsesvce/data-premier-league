@@ -1084,9 +1084,14 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: grid;
-  place-items: center;
-  padding: 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+  padding: 24px;
   background: rgba(0, 0, 0, 0.77);
   backdrop-filter: blur(14px);
   animation: modal-fade 220ms ease both;
@@ -1095,9 +1100,11 @@
 .player-modal {
   width: min(950px, 100%);
   position: relative;
+  flex: 0 0 auto;
   display: grid;
   grid-template-columns: minmax(280px, 0.95fr) minmax(300px, 1.05fr);
-  overflow: hidden;
+  margin: auto;
+  overflow: visible;
   border: 1px solid var(--team-accent);
   background: radial-gradient(circle at 5% 95%, var(--team-glow), transparent 42%), #0b0d12;
   box-shadow: 0 30px 110px rgba(0, 0, 0, 0.7), 0 0 55px var(--team-glow);
@@ -1139,8 +1146,11 @@
 }
 
 .player-modal-photo-wrap {
-  min-height: 560px;
+  height: min(70vh, 620px);
+  min-height: 0;
   position: relative;
+  display: grid;
+  place-items: center;
   overflow: hidden;
   background: radial-gradient(circle at 50% 25%, var(--team-glow), transparent 58%), #13161d;
 }
@@ -1149,8 +1159,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 50% 25%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .player-modal-number {
@@ -1368,9 +1380,10 @@
   .player-card-media { height: 230px; }
   .player-card-content { min-height: 125px; padding: 15px 13px 18px; }
   .player-card-content strong { font-size: 22px; }
-  .player-modal-backdrop { padding: 15px; }
-  .player-modal { max-height: calc(100vh - 30px); display: flex; flex-direction: column; overflow-y: auto; }
-  .player-modal-photo-wrap { min-height: 42vh; max-height: 48vh; flex: 0 0 42vh; }
+  .player-modal-backdrop { align-items: flex-start; padding: 16px; }
+  .player-modal { display: flex; flex-direction: column; overflow: visible; }
+  .player-modal-photo-wrap { height: auto; min-height: 0; max-height: none; flex: 0 0 auto; }
+  .player-modal-photo { width: 100%; height: auto; max-width: 100%; max-height: none; object-fit: contain; }
   .player-modal-copy { padding: 36px 25px 32px; }
   .player-modal-copy h2 { font-size: clamp(50px, 16vw, 80px); }
   .player-modal-facts { margin-top: 32px; }

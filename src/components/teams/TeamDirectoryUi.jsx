@@ -350,7 +350,10 @@ export function PlayerModal({ player, team, onClose }) {
 
     const previousFocus = document.activeElement
     const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const previousOverflowY = document.body.style.overflowY
+    const previousScrollX = window.scrollX
+    const previousScrollY = window.scrollY
+    document.body.style.overflowY = 'hidden'
     closeRef.current?.focus()
 
     const onKeyDown = (event) => {
@@ -361,9 +364,11 @@ export function PlayerModal({ player, team, onClose }) {
     return () => {
       window.removeEventListener('keydown', onKeyDown)
       document.body.style.overflow = previousOverflow
-      if (previousFocus instanceof HTMLElement) previousFocus.focus()
+      document.body.style.overflowY = previousOverflowY
+      if (previousFocus instanceof HTMLElement) previousFocus.focus({ preventScroll: true })
+      window.scrollTo({ top: previousScrollY, left: previousScrollX, behavior: 'auto' })
     }
-  }, [onClose])
+  }, [onClose, player])
 
   if (!player) return null
 
