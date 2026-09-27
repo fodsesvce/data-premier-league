@@ -1,5 +1,6 @@
 import { ArrowIcon } from './Icons'
 import HeroCollage from './HeroCollage'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Hero Component — DPL Main Event
@@ -31,6 +32,8 @@ import HeroCollage from './HeroCollage'
  */
 
 export default function Hero() {
+  const navigate = useNavigate()
+
   /* =========================================================
      SCROLL TO ABOUT
   ========================================================= */
@@ -49,7 +52,7 @@ export default function Hero() {
   ========================================================= */
 
   const goToRegistration = () => {
-    window.location.href = '/register'
+    navigate('/register')
   }
 
   return (

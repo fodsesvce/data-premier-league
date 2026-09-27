@@ -76,9 +76,127 @@ export function PlayerPhoto({ player, team, className = '' }) {
   )
 }
 
-export function DirectoryHero() {
+export function TeamLogoShowcase({ teams }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const reducedMotionRef = useRef(false)
+
+  useEffect(() => {
+    teams.forEach((team) => {
+      if (!team.logo) return
+      const image = new window.Image()
+      image.src = team.logo
+    })
+  }, [teams])
+
+  useEffect(() => {
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    reducedMotionRef.current = reducedMotionQuery.matches
+    let timerId = null
+
+    const stop = () => {
+      if (timerId) window.clearInterval(timerId)
+      timerId = null
+    }
+
+    const start = () => {
+      stop()
+      if (reducedMotionRef.current || document.hidden || teams.length < 2) return
+      timerId = window.setInterval(() => {
+        if (!document.hidden) {
+          setActiveIndex((current) => (current + 1) % teams.length)
+        }
+      }, 500)
+    }
+
+    const handleVisibility = () => {
+      if (document.hidden) stop()
+      else start()
+    }
+
+    const handleMotionPreference = (event) => {
+      reducedMotionRef.current = event.matches
+      start()
+    }
+
+    const subscribeToMotionPreference = () => {
+      if (reducedMotionQuery.addEventListener) {
+        reducedMotionQuery.addEventListener('change', handleMotionPreference)
+      } else {
+        reducedMotionQuery.addListener(handleMotionPreference)
+      }
+    }
+
+    const unsubscribeFromMotionPreference = () => {
+      if (reducedMotionQuery.removeEventListener) {
+        reducedMotionQuery.removeEventListener('change', handleMotionPreference)
+      } else {
+        reducedMotionQuery.removeListener(handleMotionPreference)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibility)
+    subscribeToMotionPreference()
+    start()
+
+    return () => {
+      stop()
+      document.removeEventListener('visibilitychange', handleVisibility)
+      unsubscribeFromMotionPreference()
+    }
+  }, [teams])
+
+  const activeTeam = teams[activeIndex] || teams[0]
+
+  if (!activeTeam) return null
+
   return (
-    <section className="directory-hero page-shell" aria-labelledby="directory-title">
+    <div
+      className="directory-logo-showcase"
+      style={{ '--showcase-accent': activeTeam.accent, '--showcase-glow': activeTeam.accentGlow }}
+      aria-label={`Featured team: ${activeTeam.name}`}
+    >
+      <div className="directory-showcase-orbit directory-showcase-orbit--outer" aria-hidden="true" />
+      <div className="directory-showcase-orbit directory-showcase-orbit--inner" aria-hidden="true" />
+      <div className="directory-showcase-particles" aria-hidden="true">
+        <i /><i /><i /><i /><i />
+      </div>
+      <div className="directory-showcase-stage">
+        <ImageWithFallback
+          key={activeTeam.slug}
+          src={activeTeam.logo}
+          alt={`${activeTeam.name} logo`}
+          fallback={getTeamInitials(activeTeam.name)}
+          className="directory-showcase-logo"
+          loading="eager"
+        />
+      </div>
+      <div className="directory-showcase-label" aria-live="polite">
+        <span>TEAM {activeTeam.number}</span>
+        <strong>{activeTeam.name}</strong>
+      </div>
+      <div className="directory-showcase-dots" aria-hidden="true">
+        {teams.map((team, index) => <i className={index === activeIndex ? 'active' : ''} key={team.slug} />)}
+      </div>
+    </div>
+  )
+}
+
+export function DirectoryHero({ teams }) {
+  const heroRef = useRef(null)
+
+  const handlePointerMove = (event) => {
+    if (event.pointerType !== 'mouse' || !heroRef.current) return
+    const bounds = heroRef.current.getBoundingClientRect()
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100
+    heroRef.current.style.setProperty('--pointer-x', `${x}%`)
+    heroRef.current.style.setProperty('--pointer-y', `${y}%`)
+    heroRef.current.style.setProperty('--showcase-parallax-x', `${(x - 50) * 0.08}px`)
+    heroRef.current.style.setProperty('--showcase-parallax-y', `${(y - 50) * 0.05}px`)
+  }
+
+  return (
+    <section ref={heroRef} className="directory-hero page-shell" aria-labelledby="directory-title" onPointerMove={handlePointerMove}>
       <div className="directory-hero-grid" aria-hidden="true" />
       <div className="directory-hero-copy">
         <div className="directory-eyebrow">
@@ -86,22 +204,19 @@ export function DirectoryHero() {
           DPL 2026 <span>//</span> OFFICIAL SQUADS
         </div>
         <h1 id="directory-title">
-          DPL<br /><em>TEAMS</em>
+          DPL 2026<br /><em>TEAMS</em>
         </h1>
-        <p className="directory-hero-subtitle">THE FRANCHISES ARE SET. THE SQUADS ARE READY.</p>
+        <p className="directory-hero-subtitle">THE FRANCHISES ARE SET.<br />THE SQUADS ARE READY.</p>
         <p className="directory-hero-supporting">
-          Meet the ten franchises that will compete in the Data Premier League.
+          Meet the 10 teams competing in the Data Premier League 2026.
         </p>
       </div>
       <div className="directory-hero-status" aria-label="DPL 2026 official squads">
-        <span className="status-pulse" />
-        <span>DPL 2026</span>
-        <strong>OFFICIAL SQUADS</strong>
+        <div><span className="status-pulse" /><strong>10 TEAMS</strong></div>
+        <div><span className="status-pulse" /><strong>50 PLAYERS</strong></div>
+        <div><span className="status-pulse" /><strong>SQUADS LOCKED</strong></div>
       </div>
-      <div className="directory-hero-stat" aria-hidden="true">
-        <span>10</span>
-        <small>FRANCHISES<br />LOCKED</small>
-      </div>
+      <TeamLogoShowcase teams={teams} />
     </section>
   )
 }
@@ -117,30 +232,36 @@ export function TeamCard({ team, index }) {
         '--team-glow': team.accentGlow,
         '--card-delay': `${index * 70}ms`,
       }}
+      aria-label={`View ${team.name} team experience`}
     >
       <span className="team-card-sweep" aria-hidden="true" />
-      <div className="team-card-topline">
-        <span>{team.label}</span>
-        <span>DPL 2026</span>
-      </div>
-      <div className="team-card-logo-row">
-        <TeamLogo team={team} />
-        <span className="team-card-index">{team.number}</span>
-      </div>
-      <h2>{team.name}</h2>
-      <div className="team-card-details">
-        <div>
-          <span>OWNER</span>
-          <strong>{team.owner}</strong>
+      <div className="team-card-visual">
+        <div className="team-card-visual-grid" aria-hidden="true" />
+        <div className="team-card-topline">
+          <span>{team.label}</span>
+          <span>DPL 2026</span>
         </div>
-        <div>
-          <span>SQUAD</span>
-          <strong>5 PLAYERS</strong>
+        <div className="team-card-logo-row">
+          <TeamLogo team={team} />
+          <span className="team-card-index">{team.number}</span>
         </div>
       </div>
-      <div className="team-card-footer">
-        <span>VIEW TEAM</span>
-        <ArrowIcon direction="right" size={16} />
+      <div className="team-card-info">
+        <h2>{team.name}</h2>
+        <div className="team-card-details">
+          <div>
+            <span>OWNER</span>
+            <strong>{team.owner}</strong>
+          </div>
+          <div>
+            <span>SQUAD</span>
+            <strong>5 PLAYERS</strong>
+          </div>
+        </div>
+        <div className="team-card-footer">
+          <span>VIEW TEAM</span>
+          <ArrowIcon direction="right" size={16} />
+        </div>
       </div>
     </Link>
   )
@@ -152,9 +273,9 @@ export function TeamGrid({ teams }) {
       <div className="directory-section-heading">
         <div>
           <span className="directory-kicker">01 // THE FRANCHISES</span>
-          <h2 id="directory-grid-title">MEET THE <em>TEAMS</em></h2>
+          <h2 id="directory-grid-title">TEAM <em>DIRECTORY</em></h2>
         </div>
-        <p>Ten technology-led franchises.<br />One DPL 2026 season.</p>
+        <p>10 FRANCHISES<br />ONE TROPHY</p>
       </div>
       <div className="directory-team-grid">
         {teams.map((team, index) => <TeamCard key={team.slug} team={team} index={index} />)}
@@ -222,6 +343,7 @@ export function PlayerModal({ player, team, onClose }) {
 
   useEffect(() => {
     const previousFocus = document.activeElement
+    const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     closeRef.current?.focus()
 
@@ -232,7 +354,7 @@ export function PlayerModal({ player, team, onClose }) {
     window.addEventListener('keydown', onKeyDown)
     return () => {
       window.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
       if (previousFocus instanceof HTMLElement) previousFocus.focus()
     }
   }, [onClose])

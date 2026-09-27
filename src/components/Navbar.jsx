@@ -179,13 +179,7 @@ export default function Navbar() {
 
   const goToRegistration = () => {
     setOpen(false)
-
-    /*
-     * Use normal browser navigation so /register works
-     * correctly with the Vite SPA.
-     */
-
-    window.location.href = REGISTRATION_PATH
+    navigate(REGISTRATION_PATH)
   }
 
   const goHome = () => {

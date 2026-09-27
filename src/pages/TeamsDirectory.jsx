@@ -1,7 +1,4 @@
 import { useEffect } from 'react'
-import Navbar from '../components/Navbar'
-import InteractiveBackground from '../components/InteractiveBackground'
-import CricketCursor from '../components/CricketCursor'
 import { teams } from '../data/teams'
 import { DirectoryHero, TeamGrid } from '../components/teams/TeamDirectoryUi'
 
@@ -21,11 +18,8 @@ export default function TeamsDirectory() {
 
   return (
     <div className="site-wrapper directory-page">
-      <InteractiveBackground />
-      <CricketCursor />
-      <Navbar />
       <main className="directory-main">
-        <DirectoryHero />
+        <DirectoryHero teams={teams} />
         <TeamGrid teams={teams} />
         <section className="directory-footer-band page-shell" aria-label="DPL season information">
           <span>DPL 2026</span>

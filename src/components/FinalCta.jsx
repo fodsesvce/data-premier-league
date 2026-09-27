@@ -1,6 +1,12 @@
 import { event } from '../data/eventData'
+import { Link } from 'react-router-dom'
 
 export default function FinalCta() {
+  const sectionLink = (section) => ({
+    to: '/',
+    state: { scrollTo: section },
+  })
+
   return (
     <>
       {/* =====================================================
@@ -43,25 +49,25 @@ export default function FinalCta() {
               NAVIGATION
             </span>
 
-            <a href="#home">
+            <Link {...sectionLink('home')}>
               HOME
-            </a>
+            </Link>
 
-            <a href="#about">
+            <Link {...sectionLink('about')}>
               ABOUT DPL
-            </a>
+            </Link>
 
-            <a href="#why-participate">
+            <Link {...sectionLink('why-participate')}>
               WHY PARTICIPATE
-            </a>
+            </Link>
 
-            <a href="#schedule">
+            <Link {...sectionLink('schedule')}>
               DPL JOURNEY
-            </a>
+            </Link>
 
-            <a href="#teams">
+            <Link to="/teams">
               TEAMS
-            </a>
+            </Link>
           </div>
 
           {/* =================================================

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
 import { useScrollReveal } from './hooks/useScrollReveal'
@@ -8,7 +8,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Why from './components/Why'
 import Schedule from './components/Schedule'
-import TeamsReveal from './components/TeamsReveal'
 import FinalCta from './components/FinalCta'
 
 import CinematicLoader from './components/CinematicLoader'
@@ -19,6 +18,33 @@ import RegistrationClosed from './pages/RegistrationClosed'
 import Admin from './pages/Admin'
 import TeamsDirectory from './pages/TeamsDirectory'
 import TeamDetail from './pages/TeamDetail'
+
+
+function PublicSiteShell() {
+  const location = useLocation()
+
+  return (
+    <>
+      <InteractiveBackground />
+      <CricketCursor />
+      <Navbar />
+      <div key={location.pathname} className="route-page-transition">
+        <Outlet />
+      </div>
+      <FinalCta />
+    </>
+  )
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [pathname])
+
+  return null
+}
 
 
 function HomePage() {
@@ -41,26 +67,6 @@ function HomePage() {
     <div className="site-wrapper">
 
       {/* =====================================================
-          CINEMATIC LOADER
-      ===================================================== */}
-
-      <CinematicLoader />
-
-      {/* =====================================================
-          GLOBAL VISUAL EFFECTS
-      ===================================================== */}
-
-      <InteractiveBackground />
-
-      <CricketCursor />
-
-      {/* =====================================================
-          NAVIGATION
-      ===================================================== */}
-
-      <Navbar />
-
-      {/* =====================================================
           MAIN WEBSITE
       ===================================================== */}
 
@@ -74,10 +80,6 @@ function HomePage() {
 
         <Schedule />
 
-        <TeamsReveal />
-
-        <FinalCta />
-
       </main>
     </div>
   )
@@ -88,35 +90,17 @@ export default function App() {
   return (
     <BrowserRouter>
 
+      <CinematicLoader />
+      <ScrollToTop />
+
       <Routes>
 
-        {/* =================================================
-            PUBLIC HOME PAGE
-        ================================================= */}
-
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
-
-        <Route
-          path="/teams"
-          element={<TeamsDirectory />}
-        />
-
-        <Route
-          path="/teams/:teamSlug"
-          element={<TeamDetail />}
-        />
-
-        {/* =================================================
-            PARTICIPANT REGISTRATION
-        ================================================= */}
-
-        <Route
-  path="/register"
-  element={<RegistrationClosed />}
-/>
+        <Route element={<PublicSiteShell />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/teams" element={<TeamsDirectory />} />
+          <Route path="/teams/:teamSlug" element={<TeamDetail />} />
+          <Route path="/register" element={<RegistrationClosed />} />
+        </Route>
 
         {/* =================================================
             ADMIN DASHBOARD
