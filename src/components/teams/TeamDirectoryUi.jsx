@@ -109,7 +109,7 @@ export function TeamLogoShowcase({ teams }) {
         if (!document.hidden) {
           setActiveIndex((current) => (current + 1) % teams.length)
         }
-      }, 750)
+      }, 1000)
     }
 
     const handleVisibility = () => {
