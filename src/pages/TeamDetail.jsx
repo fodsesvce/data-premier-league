@@ -5,6 +5,7 @@ import { getTeamBySlug } from '../data/teams'
 import {
   PlayerModal,
   SquadSection,
+  TeamName,
   TeamLogo,
   TeamMetadata,
   TeamSubnav,
@@ -36,7 +37,7 @@ function TeamPageHero({ team }) {
       <div className="team-page-hero-copy page-shell">
         <Link to="/teams" className="team-page-back"><span aria-hidden="true">←</span> BACK TO ALL TEAMS</Link>
         <span className="directory-eyebrow"><span className="directory-eyebrow-dot" />DPL 2026 <span>//</span> OFFICIAL FRANCHISE</span>
-        <h1 id="team-page-title">{team.name}</h1>
+        <h1 id="team-page-title"><TeamName team={team} /></h1>
         <p className="team-page-summary">5 PLAYERS <i>•</i> SQUAD CONFIRMED</p>
         <div className="team-page-owner"><span>OWNER</span><strong>{team.owner}</strong></div>
       </div>

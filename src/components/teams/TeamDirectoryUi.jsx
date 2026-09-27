@@ -57,6 +57,10 @@ export function TeamLogo({ team, large = false }) {
   )
 }
 
+export function TeamName({ team }) {
+  return (team.nameLines || [team.name]).map((line) => <span key={line}>{line}</span>)
+}
+
 export function PlayerPhoto({ player, team, className = '' }) {
   const initials = player.name
     .split(/\s+/)
@@ -247,7 +251,7 @@ export function TeamCard({ team, index }) {
         </div>
       </div>
       <div className="team-card-info">
-        <h2>{team.name}</h2>
+        <h2><TeamName team={team} /></h2>
         <div className="team-card-details">
           <div>
             <span>OWNER</span>

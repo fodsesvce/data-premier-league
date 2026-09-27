@@ -569,15 +569,20 @@
 }
 
 .directory-team-card h2 {
-  max-width: 260px;
-  min-height: 56px;
+  max-width: 100%;
+  min-height: 68px;
   color: #fff;
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: clamp(1.45rem, 2.2vw, 2.15rem);
   font-weight: 800;
   letter-spacing: -0.025em;
-  line-height: 0.94;
+  line-height: 0.9;
   text-transform: uppercase;
+}
+
+.directory-team-card h2 > span {
+  display: block;
+  white-space: nowrap;
 }
 
 .team-card-details {
@@ -1510,7 +1515,7 @@
 }
 
 .team-card-info h2 {
-  min-height: 54px;
+  min-height: 68px;
 }
 
 .team-card-info .team-card-details {
@@ -1663,15 +1668,25 @@
 }
 
 .team-page-hero h1 {
-  max-width: 850px;
+  max-width: 800px;
   margin-top: 25px;
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(4rem, 8.6vw, 9rem);
-  font-weight: 900;
-  letter-spacing: -0.06em;
-  line-height: 0.78;
+  font-size: clamp(4rem, 7.2vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.84;
   text-transform: uppercase;
+}
+
+.team-page-hero h1 > span {
+  display: block;
+  white-space: nowrap;
+  animation: team-page-name-line-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.team-page-hero h1 > span + span {
+  animation-delay: 90ms;
 }
 
 .team-page-summary {
@@ -1918,6 +1933,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes team-page-name-line-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes team-page-logo-in {
   from { opacity: 0; transform: scale(0.85); }
   to { opacity: 1; transform: scale(1); }
@@ -1989,7 +2009,8 @@
 
   .team-page-hero h1 {
     max-width: 100%;
-    font-size: clamp(3.6rem, 16vw, 7rem);
+    font-size: clamp(2.6rem, 12vw, 5.6rem);
+    letter-spacing: -0.025em;
   }
 
   .team-page-hero-logo {
@@ -2051,6 +2072,7 @@
   .team-page-hero::after,
   .team-page-hero-lines,
   .team-page-hero-logo,
+  .team-page-hero h1 > span,
   .team-page-scroll svg,
   .team-page-hero-copy {
     animation: none;
