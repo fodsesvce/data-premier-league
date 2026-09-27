@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ArrowIcon } from './Icons'
 
 /*
@@ -66,15 +67,21 @@ const sectionIds = [
 const REGISTRATION_PATH = '/register'
 
 export default function Navbar() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [active, setActive] = useState('home')
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const isHome = location.pathname === '/'
+  const isTeamsRoute = location.pathname.startsWith('/teams')
 
   /* =========================================================
      SCROLL SPY
   ========================================================= */
 
   const handleScroll = useCallback(() => {
+    if (!isHome) return
+
     setScrolled(window.scrollY > 40)
 
     const scrollPosition = window.scrollY + 160
@@ -110,9 +117,16 @@ export default function Navbar() {
     }
 
     setActive(currentSection)
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
+    setActive(isTeamsRoute ? 'teams' : isHome ? 'home' : '')
+
+    if (!isHome) {
+      setScrolled(false)
+      return undefined
+    }
+
     window.addEventListener('scroll', handleScroll, {
       passive: true,
     })
@@ -122,7 +136,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [handleScroll])
+  }, [handleScroll, isHome, isTeamsRoute])
 
   /* =========================================================
      SMOOTH SCROLL
@@ -131,9 +145,18 @@ export default function Navbar() {
   const scrollTo = (id) => {
     setOpen(false)
 
+    if (!isHome) {
+      if (id === 'teams') navigate('/teams')
+      else navigate('/', { state: { scrollTo: id } })
+      return
+    }
+
     const element = document.getElementById(id)
 
-    if (!element) return
+    if (!element) {
+      if (id === 'teams') navigate('/teams')
+      return
+    }
 
     setActive(id)
 
@@ -165,6 +188,15 @@ export default function Navbar() {
     window.location.href = REGISTRATION_PATH
   }
 
+  const goHome = () => {
+    setOpen(false)
+    if (isHome) {
+      scrollTo('home')
+    } else {
+      navigate('/')
+    }
+  }
+
   /* =========================================================
      RENDER
   ========================================================= */
@@ -187,7 +219,7 @@ export default function Navbar() {
         <button
           type="button"
           className="brand-logo"
-          onClick={() => scrollTo('home')}
+          onClick={goHome}
           aria-label="Go to DPL Data Premier League home"
         >
           <span className="brand-badge">
