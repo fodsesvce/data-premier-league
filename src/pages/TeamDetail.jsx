@@ -34,7 +34,7 @@ function TeamPageHero({ team }) {
       <div className="team-page-hero-lines" aria-hidden="true" />
       <div className="team-page-hero-logo-shadow" aria-hidden="true">{team.number}</div>
       <div className="team-page-hero-copy page-shell">
-        <Link to="/teams" className="team-page-back"><span aria-hidden="true">←</span> BACK TO TEAMS</Link>
+        <Link to="/teams" className="team-page-back"><span aria-hidden="true">←</span> BACK TO ALL TEAMS</Link>
         <span className="directory-eyebrow"><span className="directory-eyebrow-dot" />DPL 2026 <span>//</span> OFFICIAL FRANCHISE</span>
         <h1 id="team-page-title">{team.name}</h1>
         <p className="team-page-summary">5 PLAYERS <i>•</i> SQUAD CONFIRMED</p>
@@ -102,7 +102,7 @@ export default function TeamDetail() {
         <section className="team-page-cta" aria-label="Explore all DPL teams">
           <span className="directory-kicker">DPL 2026 // THE FULL DIRECTORY</span>
           <h2>EXPLORE ALL <em>DPL TEAMS</em></h2>
-          <Link to="/teams"><span aria-hidden="true">←</span> BACK TO TEAMS</Link>
+          <Link to="/teams"><span aria-hidden="true">←</span> EXPLORE ALL DPL TEAMS</Link>
         </section>
       </main>
       <PlayerModal player={selectedPlayer} team={team} onClose={() => setSelectedPlayer(null)} />

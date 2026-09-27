@@ -105,7 +105,7 @@ export function TeamLogoShowcase({ teams }) {
         if (!document.hidden) {
           setActiveIndex((current) => (current + 1) % teams.length)
         }
-      }, 500)
+      }, 750)
     }
 
     const handleVisibility = () => {
@@ -170,7 +170,7 @@ export function TeamLogoShowcase({ teams }) {
           loading="eager"
         />
       </div>
-      <div className="directory-showcase-label" aria-live="polite">
+      <div key={activeTeam.slug} className="directory-showcase-label" aria-live="polite">
         <span>TEAM {activeTeam.number}</span>
         <strong>{activeTeam.name}</strong>
       </div>
