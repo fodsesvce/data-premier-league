@@ -1510,18 +1510,23 @@
   flex: 1;
   min-height: 270px;
   margin: 0;
-  padding: 22px 24px 26px;
+  padding: 12px 24px 16px;
   align-items: center;
 }
 
 .team-card-visual .directory-logo {
-  width: min(205px, 54%);
-  height: min(205px, 54%);
+  width: min(280px, 86%);
+  height: 240px;
   border-color: rgba(255, 255, 255, 0.19);
 }
 
 .team-card-visual .directory-logo::before {
   inset: 12px;
+}
+
+.team-card-visual .directory-logo-image {
+  width: 92%;
+  height: 92%;
 }
 
 .team-card-visual .team-card-index {
@@ -1532,7 +1537,7 @@
 
 .directory-team-card:hover .team-card-visual .directory-logo,
 .directory-team-card:focus-visible .team-card-visual .directory-logo {
-  transform: scale(1.075) rotate(-2deg);
+  transform: scale(1.045) rotate(-2deg);
 }
 
 .team-card-info {
