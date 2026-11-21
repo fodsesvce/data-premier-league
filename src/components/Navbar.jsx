@@ -40,6 +40,7 @@ const navItems = [
   ['why-participate', 'WHY PARTICIPATE'],
   ['schedule', 'DPL JOURNEY'],
   ['teams', 'TEAMS'],
+  ['points-table', 'POINTS TABLE'],
 ]
 
 const sectionIds = [
@@ -143,13 +144,18 @@ export default function Navbar() {
   ========================================================= */
 
   const scrollTo = (id) => {
-    setOpen(false)
+  setOpen(false)
 
-    if (!isHome) {
-      if (id === 'teams') navigate('/teams')
-      else navigate('/', { state: { scrollTo: id } })
-      return
-    }
+  if (id === 'points-table') {
+    navigate('/points-table')
+    return
+  }
+
+  if (!isHome) {
+    if (id === 'teams') navigate('/teams')
+    else navigate('/', { state: { scrollTo: id } })
+    return
+  }
 
     const element = document.getElementById(id)
 

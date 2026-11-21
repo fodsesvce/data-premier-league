@@ -18,6 +18,7 @@ import RegistrationClosed from './pages/RegistrationClosed'
 import Admin from './pages/Admin'
 import TeamsDirectory from './pages/TeamsDirectory'
 import TeamDetail from './pages/TeamDetail'
+import PointsTable from './pages/PointsTable'
 
 
 function PublicSiteShell() {
@@ -105,11 +106,12 @@ export default function App() {
       <Routes>
 
         <Route element={<PublicSiteShell />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/teams" element={<TeamsDirectory />} />
-          <Route path="/teams/:teamSlug" element={<TeamDetail />} />
-          <Route path="/register" element={<RegistrationClosed />} />
-        </Route>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/teams" element={<TeamsDirectory />} />
+  <Route path="/teams/:teamSlug" element={<TeamDetail />} />
+  <Route path="/points-table" element={<PointsTable />} />
+  <Route path="/register" element={<RegistrationClosed />} />
+</Route>
 
         {/* =================================================
             ADMIN DASHBOARD
