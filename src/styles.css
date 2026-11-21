@@ -3308,3 +3308,305 @@ section[id] {
     margin-top: 18px;
   }
 }
+
+
+
+
+/* =========================================
+   DPL POINTS TABLE
+========================================= */
+
+.points-page {
+  min-height: 100vh;
+  padding: 100px 20px 70px;
+  background: #03082b;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.points-container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.points-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.points-eyebrow {
+  color: #55b9ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.points-heading h1 {
+  margin: 10px 0 5px;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #ffffff;
+}
+
+.points-heading p {
+  margin: 0;
+  color: #8fa8d3;
+  font-size: 14px;
+}
+
+.points-season {
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: #11183f;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+/* TABLE WRAPPER */
+
+.points-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 9px;
+  background: #081941;
+  border: 1px solid rgba(100, 150, 220, 0.12);
+}
+
+.points-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: center;
+  background: #081941;
+}
+
+.points-table thead {
+  background: #0a1944;
+}
+
+.points-table th {
+  padding: 17px 12px;
+  color: #a9c5ef;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.points-table td {
+  padding: 13px 12px;
+  height: 55px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(150, 180, 230, 0.13);
+}
+
+.points-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.points-table tbody tr:hover {
+  background: #10234e;
+}
+
+.points-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* POSITION */
+
+.points-table .position-column {
+  width: 48px;
+  font-weight: 800;
+}
+
+/* TEAM NAME AND LOGO */
+
+.points-table .team-column {
+  text-align: left;
+  min-width: 270px;
+}
+
+.points-team {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.points-team-logo {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.points-team span {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* HIGHLIGHTED POINTS COLUMN */
+
+.points-table th.pts-column,
+.points-table td.pts-column {
+  background: #142d63;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.points-table td.pts-column strong {
+  font-size: 15px;
+}
+
+/* LAST THREE MATCH RESULTS */
+
+.last-three {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.result-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.result-win {
+  background: #08ae5c;
+}
+
+.result-loss {
+  background: #ed2939;
+}
+
+.result-pending {
+  background: transparent;
+  color: #91a8d1;
+  font-size: 14px;
+}
+
+/* LEGENDS */
+
+.points-legend,
+.points-result-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  color: #b4c5e4;
+  font-size: 11px;
+}
+
+.points-legend b {
+  color: #ffffff;
+  margin-right: 3px;
+}
+
+.points-result-legend {
+  margin-top: 10px;
+}
+
+.points-result-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.win-dot {
+  background: #08ae5c;
+}
+
+.loss-dot {
+  background: #ed2939;
+}
+
+.pending-dot {
+  background: #71809e;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  .points-page {
+    padding: 90px 12px 45px;
+  }
+
+  .points-heading {
+    margin-bottom: 22px;
+  }
+
+  .points-heading h1 {
+    font-size: 30px;
+  }
+
+  .points-heading p {
+    font-size: 12px;
+  }
+
+  .points-season {
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+
+  .points-table th {
+    padding: 14px 10px;
+    font-size: 11px;
+  }
+
+  .points-table td {
+    padding: 10px;
+  }
+
+  .points-team-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .points-team {
+    gap: 10px;
+  }
+
+  .points-legend,
+  .points-result-legend {
+    gap: 12px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .points-page {
+    padding-top: 80px;
+  }
+
+  .points-heading h1 {
+    font-size: 25px;
+  }
+
+  .points-season {
+    padding: 8px 12px;
+  }
+}
